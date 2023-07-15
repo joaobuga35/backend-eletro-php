@@ -33,4 +33,15 @@ class EletroController extends Controller{
 
         return response()->json($eletros);
     }
+
+    public function oneEletro($id){
+
+        $eletro = Eletros::find($id);
+
+        if (!$eletro) {
+            return response()->json(['message' => 'Product not found'],404);
+        }
+
+        return response()->json($eletro);
+    }
 }
