@@ -11,15 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('eletros', function (Blueprint $table) {
-            $table->uuid('id');
-            $table->string('name');
-            $table->string('image');
-            $table->string('description');
-            $table->string('tension');
-            $table->string('brand');
+        Schema::table('eletros', function (Blueprint $table) {
             $table->integer('price');
-            $table->timestamps();
         });
     }
 
@@ -28,6 +21,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('table_eletros');
+        Schema::table('eletros', function (Blueprint $table) {
+            //
+        });
     }
 };

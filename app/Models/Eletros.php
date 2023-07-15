@@ -26,6 +26,7 @@ class Eletros extends Model
         'image',
         'description',
         'tension',
-        'brand'
+        'brand',
+        'price'
     ];
 }

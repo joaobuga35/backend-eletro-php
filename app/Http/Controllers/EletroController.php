@@ -45,6 +45,34 @@ class EletroController extends Controller{
         return response()->json($eletro);
     }
 
+    public function editEletro(Request $request, $id){
+        $eletro = Eletros::find($id);
+
+        if (!$eletro) {
+            return response()->json(['message' => 'Product not found.'],404);
+        }
+
+        $validator = Validator::make($request->all(), [
+            'brand' => [
+                'required',
+                function ($attribute, $value, $fail) {
+                    if (!in_array($value, Eletros::$brands)) {
+                        $fail('A marca selecionada não é permitida. Apenas: LG, Samsung, Fischer, Brastemp, Electrolux.');
+                    }
+                }
+            ],
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json($validator->errors(), 400);
+        }
+
+        $eletro->fill($request->except('id'));
+        $eletro->save();
+
+        return response()->json($eletro);
+    }
+
     public function deleteEletro($id){
 
         $eletro = Eletros::find($id);
