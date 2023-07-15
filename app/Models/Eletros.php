@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use App\Enums\BrandsEnum;
+
 
 class Eletros extends Model
 {
@@ -16,7 +16,7 @@ class Eletros extends Model
     */
     protected $table = 'eletros';
 
-
+    public static $brands = ['LG', 'Samsung', 'Fischer', 'Brastemp', 'Electrolux'];
     /**
     * @var array $fillable
     */
@@ -27,9 +27,5 @@ class Eletros extends Model
         'description',
         'tension',
         'brand'
-    ];
-
-    protected $casts = [
-        'brand' => BrandsEnum::class
     ];
 }
