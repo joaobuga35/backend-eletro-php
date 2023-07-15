@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('description');
             $table->string('tension');
             $table->string('brand');
-            $table->integer('price');
+            $table->decimal('price',8,2);
             $table->timestamps();
         });
     }

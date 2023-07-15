@@ -2,13 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CreateEletroRequest;
+use App\Http\Requests\UpdateEletroRequest;
 use App\Models\Eletros;
 use App\Services\CreateEletroService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
 class EletroController extends Controller{
-    public function create(Request $request)
+    public function create(CreateEletroRequest $request)
     {
         $createEletroService = new CreateEletroService();
 
@@ -35,7 +37,7 @@ class EletroController extends Controller{
         return response()->json($eletro);
     }
 
-    public function editEletro(Request $request, $id)
+    public function editEletro(UpdateEletroRequest $request, $id)
     {
         $eletro = Eletros::find($id);
 
