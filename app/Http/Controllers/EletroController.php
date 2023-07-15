@@ -39,9 +39,21 @@ class EletroController extends Controller{
         $eletro = Eletros::find($id);
 
         if (!$eletro) {
-            return response()->json(['message' => 'Product not found'],404);
+            return response()->json(['message' => 'Product not found.'],404);
         }
 
         return response()->json($eletro);
+    }
+
+    public function deleteEletro($id){
+
+        $eletro = Eletros::find($id);
+
+        if (!$eletro) {
+            return response()->json(['message' => 'Product not found.'],404);
+        }
+
+        $eletro->delete();
+        return response()->json([],204);
     }
 }
