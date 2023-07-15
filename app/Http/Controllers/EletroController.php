@@ -26,4 +26,11 @@ class EletroController extends Controller{
 
         return Eletros::create($request -> all());
     }
+
+    public function allEletros(){
+
+        $eletros = Eletros::all();
+
+        return response()->json($eletros);
+    }
 }
