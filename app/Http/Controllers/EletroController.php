@@ -4,10 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\CreateEletroRequest;
 use App\Http\Requests\UpdateEletroRequest;
-use App\Models\Eletros;
 use App\Services\CreateEletroService;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Validator;
+use App\Services\DeleteEletroService;
+use App\Services\EditEletroService;
+use App\Services\ReadEletrosService;
+
 
 class EletroController extends Controller{
     public function create(CreateEletroRequest $request)
@@ -18,63 +19,40 @@ class EletroController extends Controller{
     }
 
     public function allEletros()
-    {
+    {   
+        $readAllEletrosService = new ReadEletrosService();
 
-        $eletros = Eletros::all();
+        $response = $readAllEletrosService->readAll();
 
-        return response()->json($eletros);
+        return response()->json($response);
     }
 
-    public function oneEletro($id)
-    {
+    public function oneEletro(string $id)
+    {   
+        $readOneEletroService = new ReadEletrosService();
 
-        $eletro = Eletros::find($id);
+        $response = $readOneEletroService->readOne($id);
 
-        if (!$eletro) {
-            return response()->json(['message' => 'Product not found.'],404);
-        }
-
-        return response()->json($eletro);
+        return response()->json($response);
     }
 
-    public function editEletro(UpdateEletroRequest $request, $id)
-    {
-        $eletro = Eletros::find($id);
+    public function editEletro(UpdateEletroRequest $request, string $id)
+    {   
+        $data = $request->validated();
 
-        if (!$eletro) {
-            return response()->json(['message' => 'Product not found.'],404);
-        }
+        $editEletro = new EditEletroService();
 
-        $validator = Validator::make($request->all(), [
-            'brand' => [
-                'required',
-                function ($attribute, $value, $fail) {
-                    if (!in_array($value, Eletros::$brands)) {
-                        $fail('A marca selecionada não é permitida. Apenas: LG, Samsung, Fischer, Brastemp, Electrolux.');
-                    }
-                }
-            ],
-        ]);
+        $response = $editEletro->execute($data, $id);
 
-        if ($validator->fails()) {
-            return response()->json($validator->errors(), 400);
-        }
-
-        $eletro->fill($request->except('id'));
-        $eletro->save();
-
-        return response()->json($eletro);
+        return response()->json($response);
     }
 
     public function deleteEletro($id)
     {
-        $eletro = Eletros::find($id);
+        $deleteEletroService = new DeleteEletroService();
 
-        if (!$eletro) {
-            return response()->json(['message' => 'Product not found.'],404);
-        }
+        $deleteEletroService->destroyEletro($id);
 
-        $eletro->delete();
         return response()->json([],204);
     }
 }

@@ -7,7 +7,8 @@ use App\Models\Eletros;
 
 class CreateEletroService{
 
-    public function execute(array $data){
+    public function execute(array $data)
+    {
         
         $checkBrand = in_array($data['brand'], Eletros::$brands);
  
