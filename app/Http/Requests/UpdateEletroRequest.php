@@ -26,7 +26,7 @@ class UpdateEletroRequest extends FormRequest
             'image' => ['string'],
             'tension' => ['string'],
             'brand' => ['string'],
-            'price' => ['numeric'],
+            'price' => ['numeric', 'gte:0.01'],
             'description' => ['max:200', 'min: 15']
         ];
     }

@@ -26,7 +26,7 @@ class CreateEletroRequest extends FormRequest
             'image' => ['required','string'],
             'tension' => ['required','string'],
             'brand' => ['required','string'],
-            'price' => ['required', 'numeric'],
+            'price' => ['required', 'numeric', 'gte:0.01'],
             'description' => ['required','max:200', 'min: 15']
         ];
     }
