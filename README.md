@@ -23,7 +23,9 @@ API voltada para o registro de eletrodomésticos.
 <h2>Para rodar o projeto localmente siga os seguintes passos: </h2>
 
  <h4>1º Passo</h4>
-  <h5>Certifique-se de ter o docker e o docker compose instalados em sua máquina.</h3>
+     
+  <h5>Certifique-se de ter o docker e o docker compose instalados em sua máquina.</h5>
+  <p>Faça o fork deste repositório e clone-o para a sua máquina para poder testar.</p>
   <p>
       Docker version >= 23.0.5
       Docker Compose version >= v2.17.3
