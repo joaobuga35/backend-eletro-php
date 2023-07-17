@@ -1,66 +1,77 @@
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+<h2>Índice</h2>
 
-## About Laravel
+1. [ Descrição ](#sobre)
+2. [ Tecnologias](#techs)
+3. [ Instalação ](#install)
+4. [ Endpoints ](#end)
+5. [ Deploy ](#deploy)
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+<a name="descricao"></a>
+## Descrição
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+API voltada para o registro de eletrodomésticos. 
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+<a name="techs"></a>
+## Tecnologias utilizadas
+- PHP
+- Laravel
 
-## Learning Laravel
+<a name="install"></a>
+## Instalação: 
+<h2>Para rodar o projeto localmente siga os seguintes passos: </h2>
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+ <h4>1º Passo</h4>
+  <h5>Certifique-se de ter o docker e o docker compose instalados em sua máquina.</h3>
+  <p>
+      Docker version >= 23.0.5
+      Docker Compose version >= v2.17.3
+  </p>
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+  <h4>2º passo</h4>
+    <p>Variáveis de ambiente:</p>
+    <p>Crie um arquivo .env e complete as variáveis do database com suas informações conforme esta no .env.example.</p>
+    
+  <h4>3º Passo - Configurando o Backend</h4>
+  - Rode os seguintes comandos: 
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
 
-## Laravel Sponsors
+```bash
+Para ativar a aplicação e conseguir rodar o localhost:
+$ docker-compose up
+```
+  
+```bash
+Para rodar migrações:
+$ docker exec -it test_eletro_php-laravel.test-1 /bin/sh
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+#migrate
+$ php artisan migrate
+```
 
-### Premium Partners
+ <h4>4º Passo - Testando a aplicação</h4>
+ - Utilize o workspace do insomnia que está localizado no arquivo raiz com o nome: eletros-workspace.json
+ - Link para teste http://localhost/api/{endpoint} 
+ - Siga a tabela abaixo para fazer os testes: 
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
+<a name="end"></a>
+# Endpoints do serviço
 
-## Contributing
+| Método | Endpoint | Responsabilidade |
+|--------|----------|------------------|
+| POST | /eletros | Criar um novo eletrodoméstico |
+| GET | /eletros | Listar todos os eletrodomésticos |
+| GET | /eletros/&lt;id&gt; | Listar um eletrodoméstico |
+| PATCH | /eletros/&lt;id&gt; | Atualiza os dados de um eletrodoméstico de forma dinâmica |
+| DELETE | /eletros/&lt;id&gt; | Deleta um eletrodoméstico |
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
 
-## Code of Conduct
+<a name="deploy"></a>
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+## Deploy 
 
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+<h4>Foi efetuado um deploy para se utilizar no front-end</h4>
+<p>Link do deploy: https://backend-eletro-php.onrender.com</p>
+<p>Link do repositório do front-end: </p>
+<p>Link do deploy do front-end para teste: </p>
