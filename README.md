@@ -33,12 +33,7 @@ API voltada para o registro de eletrodomésticos.
 
   <h4>2º passo</h4>
     <p>Variáveis de ambiente:</p>
-    <p>Crie um arquivo .env e complete as variáveis do database com suas informações conforme esta no .env.example.</p>
-
-    ```bash
-        Caso venha a ter algum problema no .env teste a seguinte configuração trocando o root por sail:
-            DB_USERNAME=sail
-    ```
+    <p>Renomeie o arquivo .env.example para .env, assim ele carregará as váriaveis de ambiente</p>
     
   <h4>3º Passo - Configurando o Backend</h4>
   - Rode os seguintes comandos: 
@@ -50,7 +45,7 @@ $ docker-compose up
 ```
   
 ```bash
-Para rodar migrações:
+Para rodar migrações se necessário:
 $ docker exec -it backend-eletro-php-laravel.test-1 /bin/sh
 
 #migrate
