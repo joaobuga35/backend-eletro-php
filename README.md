@@ -51,7 +51,7 @@ $ docker-compose up
   
 ```bash
 Para rodar migrações:
-$ docker exec -it test_eletro_php-laravel.test-1 /bin/sh
+$ docker exec -it backend-eletro-php-laravel.test-1 /bin/sh
 
 #migrate
 $ php artisan migrate
