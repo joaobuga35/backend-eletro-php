@@ -319,6 +319,6 @@ $ php artisan migrate
 
 ## Deploy 
 
-<h4>Foi efetuado um deploy de aplicação front-end para testar a API localmente.</h4>
-<p>Link do deploy:</p>
-<p>Link do repositório do front-end: </p>
+<h4>Foi efetuado um deploy de aplicação back-end para testar a API.</h4>
+<p>Link do deploy: <a href="https://backend-eletro-php.onrender.com">Back-end deploy</a></p>
+<p>Link do repositório do front-end: <a href="https://github.com/joaobuga35/eletrostore">Front-end repositório</a></p>
